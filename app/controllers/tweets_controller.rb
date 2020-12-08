@@ -19,9 +19,16 @@ class TweetsController < ApplicationController
 
   def destroy
     tweet = Tweet.destroy(params[:id])
-    tweet.destroy
+    if tweet.destroy
+      redirect_to root_path
+    else
+      render :show
+    end
   end
 
+  def show
+    @tweet = Tweet.find(params[:id])
+  end
 
 
   private 
