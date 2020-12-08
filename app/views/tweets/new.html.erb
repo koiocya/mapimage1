@@ -1,0 +1,72 @@
+<div class="contents row">
+ 
+  <div class="container">
+    <h3>投稿する</h3>
+    <div class="content">
+      <%= form_with(model: @tweet, local: true) do |f| %>
+      <%= render 'shared/error_messages', model: f.object %>
+    <div class="img-upload">
+      <div class="img-text">
+      投稿画像
+      <span class="indispensable">必須</span>
+      </div>
+      <div class="click-uplaod">
+        <p>クリックしてファイルをアップロード</p>
+        <%= f.file_field :image, id:"tweet-image" %>
+      </div>
+    </div>
+
+    <div class="tweet-title">
+      <div class="title-text">
+      タイトル
+      <span class="indispensable">必須</span>
+      </div>
+      <%= f.text_field :title, placeholder: "タイトル" %>
+    </div>
+
+    <div class="tweet-explain">
+      <div class="explain-text">
+      ポイント
+      <span class="indispensable">必須</span>
+      </div>
+      <%= f.text_area :explain, placeholder: "text", rows: "10" %>
+    </div>
+
+    <div class="tweet-category">
+      <div class="category-number">
+      カテゴリー
+      </div>
+      <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"select-box", id:"tweet-category"}) %>
+    </div>
+
+    <div class="tweet-prefecture">
+      <div class="prefecture-number">
+      都道府県
+      </div>
+      <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {class:"select-box", id:"tweet-prefecture"}) %>
+    </div>
+
+     <div class="tweet-city">
+      <div class="city-text">
+      市町村
+      <span class="indispensable">必須</span>
+      </div>
+      <%= f.text_field :city, placeholder: "市町村" %>
+    </div>
+
+    <div class="tweet-house_number">
+      <div class="house_number-text">
+      番地
+      <span class="any">任意</span>
+      </div>
+      <%= f.text_field :house_number, placeholder: "番地" %>
+    </div>
+
+    <div class="sell-btn-contents">
+      <%= f.submit "投稿する" ,class:"sell-btn" %>
+      <%=link_to '戻る', root_path, class:"back-btn" %>
+    </div>
+    <% end %>
+    </div>
+  </div>
+</div>
