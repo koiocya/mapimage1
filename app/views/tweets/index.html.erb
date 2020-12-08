@@ -1,1 +1,14 @@
-<h1>Hello</h1>
+<div class="tweet-main">
+  <div class="tweet-upper">
+    <div class="user-name">
+     <%= current_user.nickname %>
+    </div>
+  </div>
+  <div class="tweet-lower">
+    <% @tweets.each do |tweet| %>
+    <div class="tweet-title">
+      <%= tweet.title %>
+    <div>
+      <%= image_tag tweet.image, class: 'tweet-image' %>
+    <% end %>
+</div>
