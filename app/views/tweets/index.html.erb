@@ -13,6 +13,11 @@
     <div>
     <div class="tweet-image">
       <%=link_to (image_tag tweet.image.variant(resize: '500x500')), tweet_path(tweet.id) %>
+      <span class="name">
+      <a href="/users/<%= tweet.user.id %>">
+        <span>投稿者</span><%= tweet.user.nickname %>
+        </a>
+      </span>
     </div>
     <% end %>
 </div>
