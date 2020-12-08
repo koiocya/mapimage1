@@ -1,7 +1,9 @@
 <div class="tweet-main">
   <div class="tweet-upper">
     <div class="user-name">
+    <% if user_signed_in? %>
      <%= current_user.nickname %>
+    <% end %>
     </div>
   </div>
   <div class="tweet-lower">
@@ -10,12 +12,7 @@
       <%= tweet.title %>
     <div>
     <div class="tweet-image">
-      <%= image_tag tweet.image.variant(resize: '500x500') %>
-      <ul class="more_list">
-        <li>
-          <%= link_to '削除', tweet_path(tweet.id), method: :delete %>
-        </li>
-      </ul>
+      <%=link_to (image_tag tweet.image.variant(resize: '500x500')), tweet_path(tweet.id) %>
     </div>
     <% end %>
 </div>
