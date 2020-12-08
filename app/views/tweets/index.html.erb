@@ -9,6 +9,13 @@
     <div class="tweet-title">
       <%= tweet.title %>
     <div>
-      <%= image_tag tweet.image, class: 'tweet-image' %>
+    <div class="tweet-image">
+      <%= image_tag tweet.image.variant(resize: '500x500') %>
+      <ul class="more_list">
+        <li>
+          <%= link_to '削除', tweet_path(tweet.id), method: :delete %>
+        </li>
+      </ul>
+    </div>
     <% end %>
 </div>
