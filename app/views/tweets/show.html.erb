@@ -1,6 +1,9 @@
 <div class="tweet-show">
   <div class="tweet-box">
-    
+      <% if user_signed_in? && current_user == @tweet.user %>
+      <%= link_to '編集', edit_tweet_path, method: :get, class: "tweet-red-btn" %>
+      <%= link_to '削除', tweet_path(@tweet.id), method: :delete, class: "tweet-red-btn" %>
+    <% end %>
     <h2 class="title">
       <%= @tweet.title %>
     </h2>
@@ -8,25 +11,45 @@
       <%= image_tag @tweet.image.variant(resize: '500x500'), class:"tweet-box-img" %>
     </div>
     <div class="tweet-expalin">
+      <label>詳細</label>
       <%= @tweet.explain %>
     </div>
     <div class="tweet-category">
+      <label>カテゴリー</label>
       <%= @tweet.category.name %>
     </div>
     <div class="tweet-prefecture">
+      <label>都道府県</label>
       <%= @tweet.prefecture.name %>
     </div>
     <div class="tweet-city">
+      <label>市町村</label>
       <%= @tweet.city %>
     </div>
     <div class="tweet-house_number">
+      <label>番地</label>
       <%= @tweet.house_number %>
     </div>
-
-    <% if user_signed_in? && current_user == @tweet.user %>
-      <%= link_to '編集', edit_tweet_path, method: :get, class: "tweet-red-btn" %>
-      <%= link_to '削除', tweet_path(@tweet.id), method: :delete, class: "tweet-red-btn" %>
+  </div>
+  <div class="tweet-comments">
+    <% if user_signed_in? %>
+      <%= form_with(model:[@tweet, @comment], local: true) do |f| %>
+        <%= f.text_area :text, placeholder: "コメントする", rows: "2" %>
+        <%= f.submit "送信" %>
+      <% end %>
+      <% else %>
+        <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
     <% end %>
-    
+    <div class="comment">
+      <h3>＜コメント一覧＞</h3>
+      <% if @comments %>
+        <% @comments.each do |comment|%>
+          <p>
+            <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}"%>:</strong>
+            <%= comment.text %>
+          </p>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
