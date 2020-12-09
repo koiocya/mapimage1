@@ -26,10 +26,13 @@ class User < ApplicationRecord
     validates_format_of :password, { with: PASSWORD_REGEX, message: '半角英数字で入力して下さい' }
     validates :password, presence: true, length: { minimum: 8 }
 
-  #　以下：アソシエーション
-  has_many :tweets
-
   #　以下：ユーザー画像機能
   mount_uploader :image, ImageUploader
   validates :image, presence: { message: 'を選択してください' }
+
+
+  #　以下：アソシエーション
+  has_many :tweets
+  has_many :comments
+
 end
