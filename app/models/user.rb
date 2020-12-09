@@ -31,4 +31,5 @@ class User < ApplicationRecord
 
   #　以下：ユーザー画像機能
   mount_uploader :image, ImageUploader
+  validates :image, presence: { message: 'を選択してください' }
 end
