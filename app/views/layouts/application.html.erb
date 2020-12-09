@@ -12,14 +12,20 @@
   <body>
     <header class="header">
       <div class="header__bar row">
-        <h1 class="grid-6"><a href="/">AsobiTweet</a></h1>
+        <h1 class="grid-6"><a href="/">Mapimage</a></h1>
         <% if user_signed_in? %>
           <div class="user_nav grid-6">
-            <span><%= current_user.nickname %>
+            <div class="user-name">
+            <% if user_signed_in? %>
+            <%= current_user.nickname %><br/>
+            <img src=<%= current_user.image %> class="icon_image">
+            <% end %>
+            </div>
               <ul class="user__info">
                 <li>
                   <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
                   <%= link_to "マイページ", "/users/#{current_user.id}" %>
+                  <%= link_to "ユーザー編集", edit_user_registration_path %>
                 </li>
               </ul>
             </span>

@@ -3,6 +3,7 @@ ja:
    attributes:
      user:
        nickname: ニックネーム
+       image: 写真
      tweet:
        text: テキスト
        image: 画像
@@ -12,3 +13,4 @@ ja:
        house_number: 番地
        category_id: カテゴリー
        prefecture_id: 都道府県
+      

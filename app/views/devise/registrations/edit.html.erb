@@ -1,43 +1,35 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h2>ユーザー情報入力</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+   <div class="form-group">
+    <%= f.label :"プロフィール写真" %><br/>
+    <%= f.file_field :image %><br/>
+    <img src=<%= current_user.image %> class="icon_image">
+  </div>
+  <div class="form-group">
+    <%= f.label :"nickname" %><br/>
+    <%= f.text_field :nickname,class:"input-default", placeholder: "ニックネーム" %>
   </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
+  <div class="form-group">
+    <%= f.label :"自己紹介" %><br/>
+    <%= f.text_area :introduction,class:"input-default", placeholder: "自己紹介" %>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  <div class="form-group">
+    <%= f.password_field :password,class:"input-default", placeholder: "パスワード" %>
+    <p class='info-text'>※英字と数字の両方を含めて8文字以上で設定してください</p>
   </div>
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
+  <div class="form-group">
+    <%= f.password_field :password_confirmation, class:"input-default", placeholder: "パスワード(確認)" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Update" %>
+    <%= f.submit "編集完了" %>
   </div>
 <% end %>
 
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+<%= render "devise/shared/links" %>
