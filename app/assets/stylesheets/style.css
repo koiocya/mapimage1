@@ -68,6 +68,7 @@ h2{
 .info-text{
   text-align: center;
   color: orangered;
+  font-size: 10px;
 }
 .form-image {
   font-size: 10px;
@@ -83,6 +84,7 @@ h2{
   display: block;
   margin-left: auto;
   margin-right: auto;
+  text-align: center;
 }
 .form-image:hover {
   box-shadow    : none;        /* カーソル時の影消去 */

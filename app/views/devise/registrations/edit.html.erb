@@ -9,17 +9,16 @@
     <label class="form-image">
       <span class="image-file">プロフィール画像を選択</span>
       <input type="file" class="hidden">
-    </label>
-      
-  </div>
-
+    </label> 
+   </div>
+  
   <div class="form-group">
-    <%= f.label :"nickname" %><br/>
+    <p class="info-text">※ニックネームを入力してください</p>
     <%= f.text_field :nickname,class:"input-default", placeholder: "ニックネーム" %>
   </div>
 
   <div class="form-group">
-    <%= f.label :"自己紹介" %><br/>
+    <p class="info-text">※自己紹介を記入してください</p>
     <%= f.text_area :introduction,class:"input-default", placeholder: "自己紹介" %>
   </div>
 
