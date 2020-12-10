@@ -4,8 +4,11 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
    <div class="form-group">
-    <%= f.label :"プロフィール写真" %><br/>
-    <%= f.file_field :image %>
+    <%= f.file_field :image,class:"image-default" %>
+    <label class="form-image">
+      <span class="image-file">プロフィール画像を選択</span>
+      <input type="file" class="hidden">
+    </label>
   </div>
   <div class="form-group">
     <%= f.text_field :nickname,class:"input-default", placeholder: "ニックネーム" %>
@@ -29,7 +32,7 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "ユーザー登録" %>
+    <input type="submit" value="登録" class="button">
   </div>
 <% end %>
 
