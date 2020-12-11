@@ -25,6 +25,11 @@ a{
   border        : 2px solid rgba(77, 166, 255, 0.72);    /* 枠の指定 */
   margin-bottom: 10px;
 }
+.post:hover {
+  box-shadow    : none;        /* カーソル時の影消去 */
+  color         : rgba(77, 166, 255, 0.72);     /* 背景色     */
+  background    : rgba(255, 255, 255, 0.93);     /* 文字色     */
+}
 .user-name{
   display: inline;
   text-align: left;
@@ -232,5 +237,9 @@ table {
 
 /* 投稿一覧 */
 .contents{
+  text-align: center;
+}
+/* コメント */
+.comment-area{
   text-align: center;
 }
