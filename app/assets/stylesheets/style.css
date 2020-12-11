@@ -156,12 +156,15 @@ li{
 /* トップメイン */
 
 .tweet-title{
+  margin-left: 50px;
   border-bottom: dotted 0.5px;
 }
 .tweet-prefecture{
+  margin-left: 50px;
   border-bottom: dotted 0.5px;
 }
 .tweet-nickname{
+  margin-left: 50px;
   border-bottom: dotted 0.5px;
 }
 .tweet-main{
@@ -174,28 +177,60 @@ table {
 .tweet-image{
   margin-top: 10px;
 }
+
+
 /* 投稿画面 */
 .tweets-title{
-  margin-bottom: 15px;
   text-align: center;
+  margin-bottom: 10px;
 }
 .tweets-explain{
-  margin-bottom: 15px;
   text-align: center;
+  margin-bottom: 10px;
 }
 .tweets-category{
-  margin-bottom: 15px;
   text-align: center;
+  margin-bottom: 10px;
 }
 .tweets-prefecture{
-  margin-bottom: 15px;
   text-align: center;
+  margin-bottom: 10px;
 }
 .tweets-city{
-  margin-bottom: 15px;
   text-align: center;
+  margin-bottom: 10px;
 }
 .tweets-house_number{
-  margin-bottom: 15px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* 詳細画面 */
+.tweet-explain{
+  border-bottom: dotted 0.5px;
+}
+.tweet-category{
+  border-bottom: dotted 0.5px;
+}
+.tweet-prefecture{
+  border-bottom: dotted 0.5px;
+}
+.tweet-city{
+  border-bottom: dotted 0.5px;
+}
+.tweet-house_number{
+  border-bottom: dotted 0.5px;
+}
+.tweet-box-img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.tweet-table{
+  margin-top: 5px;
+}
+
+/* 投稿一覧 */
+.contents{
   text-align: center;
 }

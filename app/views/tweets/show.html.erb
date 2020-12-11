@@ -10,25 +10,29 @@
     <div class="tweet-img">
       <%= image_tag @tweet.image.variant(resize: '500x500'), class:"tweet-box-img" %>
     </div>
-    <div class="tweet-expalin">
-      <label>詳細</label>
-      <%= @tweet.explain %>
-    </div>
-    <div class="tweet-category">
-      <label>カテゴリー</label>
-      <%= @tweet.category.name %>
-    </div>
-    <div class="tweet-prefecture">
-      <label>都道府県</label>
-      <%= @tweet.prefecture.name %>
-    </div>
-    <div class="tweet-city">
-      <label>市町村</label>
-      <%= @tweet.city %>
-    </div>
-    <div class="tweet-house_number">
-      <label>番地</label>
-      <%= @tweet.house_number %>
+    <div class="tweet-table">
+    <table>
+      <tr>
+        <th class="tweet-expalins">詳細</th>
+        <th class="tweet-expalin"><%= @tweet.explain %></th>
+      </tr>
+      <tr>
+        <th class="tweet-categorys">カテゴリー</th>
+        <th class="tweet-category"><%= @tweet.category.name %></th>
+      </tr>
+      <tr>
+        <th class="tweet-prefectures">都道府県</th>
+        <th class="tweet-prefecture"><%= @tweet.prefecture.name %></th>
+      </tr>
+      <tr>
+        <th class="tweet-citys">市町村</th>
+        <th class="tweet-city"><%= @tweet.city %></th>
+      </tr>
+      <tr>
+        <th class="tweet-house_numbers">番地</th>
+        <th class="tweet-house_number"><%= @tweet.house_number %></th>
+      </tr>
+    </table>
     </div>
   </div>
   <div class="tweet-comments">
