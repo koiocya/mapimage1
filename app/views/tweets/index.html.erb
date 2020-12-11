@@ -1,18 +1,25 @@
 <div class="tweet-main">
   <div class="tweet-upper">
-  </div>
-  <div class="tweet-lower">
-    <% @tweets.each do |tweet| %>
-    <div class="tweet-title">
-      <%= tweet.title %>
-    <div>
-    <div class="tweet-image">
+     <% @tweets.each do |tweet| %>
+      <div class="tweet-image">
       <%=link_to (image_tag tweet.image.variant(resize: '500x500')), tweet_path(tweet.id) %>
-      <span class="name">
-      <a href="/users/<%= tweet.user.id %>">
-        <span>投稿者</span><%= tweet.user.nickname %>
-        </a>
-      </span>
-    </div>
+      </div>
+    <div class="tweet-table">
+    <table>
+      <tr>
+        <th class="tweet-titles">タイトル</th>
+        <th class="tweet-title"><%= tweet.title %></th>
+      </tr>
+      <tr>
+        <th class="tweet-prefectures">撮影地</th>
+        <th class="tweet-prefecture"><%= tweet.prefecture.name %></th>
+      </tr>
+      <tr>
+        <th class="tweet-nicknames">投稿者</th>
+        <th class="tweet-nickname"><%= tweet.user.nickname %></th>
+      </tr>
+    </table>
     <% end %>
+    </div>
+  </div>
 </div>

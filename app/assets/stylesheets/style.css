@@ -1,3 +1,4 @@
+
 /* ヘッダー */
 a{
   text-decoration: none;
@@ -151,4 +152,25 @@ li{
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+/* トップメイン */
+
+.tweet-title{
+  border-bottom: dotted 0.5px;
+}
+.tweet-prefecture{
+  border-bottom: dotted 0.5px;
+}
+.tweet-nickname{
+  border-bottom: dotted 0.5px;
+}
+.tweet-main{
+  text-align: center;
+}
+table {
+  margin-left: auto;
+  margin-right: auto;
+}
+.tweet-image{
+  margin-top: 10px;
 }
