@@ -1,11 +1,12 @@
 <div class ="contents row">
   <p><%= @nickname %>さんの投稿一覧</p>
   <% @tweets.each do |tweet| %>
-      <div class="tweet-title">
-        <p><%= tweet.title %></p>
-      <div>
-      <div class="tweet-image">
-        <%=link_to (image_tag tweet.image.variant(resize: '500x500')), tweet_path(tweet.id) %>
-      </div>
+    <h2 class="title">
+      <%= tweet.title %>
+    </h2>
+  
+    <div class="tweet-image">
+      <%=link_to (image_tag tweet.image.variant(resize: '500x500')), tweet_path(tweet.id),class:"image-tweet" %>
+    </div>
   <% end %>
 </div>

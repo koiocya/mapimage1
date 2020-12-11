@@ -1,13 +1,245 @@
+
+/* ヘッダー */
+a{
+  text-decoration: none;
+}
+.nav__left{
+  font-size: 30px;
+}
+.nav__right{
+  font-size: 15px;
+  text-align: right;
+  margin-right: 40px;
+}
+.post{
+  display       : inline-block;
+  border-radius : 10%;          /* 角丸       */
+  font-size     : 5pt;        /* 文字サイズ */
+  text-align    : center;      /* 文字位置   */
+  cursor        : pointer;     /* カーソル   */
+  padding       : 8px 15px;   /* 余白       */
+  background    : rgba(77, 166, 255, 0.72);     /* 背景色     */
+  color         : rgba(255, 255, 255, 0.93);     /* 文字色     */
+  line-height   : 1em;         /* 1行の高さ  */
+  transition    : .3s;         /* なめらか変化 */
+  border        : 2px solid rgba(77, 166, 255, 0.72);    /* 枠の指定 */
+  margin-bottom: 10px;
+}
+.post:hover {
+  box-shadow    : none;        /* カーソル時の影消去 */
+  color         : rgba(77, 166, 255, 0.72);     /* 背景色     */
+  background    : rgba(255, 255, 255, 0.93);     /* 文字色     */
+}
+.user-name{
+  display: inline;
+  text-align: left;
+}
+.top_image{
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  object-fit: cover;
+}
 .header{
-  background-color: cyan;
+  background-image: url("/assets/212372.jpg");
+  margin: 0 0 0 0;
+  background-size: auto;
+  border-bottom: dotted 1px;
+
+}
+.user__info{
+  display: inline;
+}
+.users-info{
+  display: inline;
+  font-size: 20px;
+  margin-left: 5px;
+  text-align: right;
+}
+/* ※ログイン画面 */
+h2{
+  text-align: center;
 }
 .form-group{
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
+.input-default{
+  padding: 5px 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* ログインボタン */
+.button {
+  display       : inline-block;
+  border-radius : 10%;          /* 角丸       */
+  font-size     : 10pt;        /* 文字サイズ */
+  text-align    : center;      /* 文字位置   */
+  cursor        : pointer;     /* カーソル   */
+  padding       : 8px 60px;   /* 余白       */
+  background    : rgba(77, 166, 255, 0.72);     /* 背景色     */
+  color         : rgba(255, 255, 255, 0.93);     /* 文字色     */
+  line-height   : 1em;         /* 1行の高さ  */
+  transition    : .3s;         /* なめらか変化 */
+  border        : 2px solid rgba(77, 166, 255, 0.72);    /* 枠の指定 */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.button:hover {
+  box-shadow    : none;        /* カーソル時の影消去 */
+  color         : rgba(77, 166, 255, 0.72);     /* 背景色     */
+  background    : rgba(255, 255, 255, 0.93);     /* 文字色     */
+}
+.forget-pass{
+  text-align: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* エラーメッセージ */
+.login-flash-message{
+  color: orangered;
+  margin-bottom: 10px;
+  text-align: center;
+}
+/* 新規登録画面 */
+.image-default{
+  display: none;
+}
+.info-text{
+  text-align: center;
+  color: orangered;
+  font-size: 10px;
+}
+.form-image {
+  font-size: 10px;
+  border-radius : 10%;          /* 角丸       */
+  background    : rgba(255, 127, 127, 0.88);     /* 背景色     */
+  color         : #ffffff;     /* 文字色     */
+  line-height   : 1em;         /* 1行の高さ  */
+  transition    : .3s;         /* なめらか変化 */
+  border        : 2px solid rgba(255, 127, 127, 0.88);    /* 枠の指定 */
+  padding: 10px;
+  width: 130px;
+  margin: 5px 30px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+.form-image:hover {
+  box-shadow    : none;        /* カーソル時の影消去 */
+  color         : rgba(255, 127, 127, 0.88);     /* 背景色     */
+  background    : #ffffff;     /* 文字色     */
+}
+.hidden {
+  display: none;
+}
+.error-explanation{
+  color: orangered;
+  margin-bottom: 10px;
+  text-align: center;
+}
+li{
+  color: orangered;
+  margin-bottom: 10px;
+  text-align: center;
+  list-style: none;
+}
+/* ユーザー編集画面 */
 .icon_image{
   width: 100px;
   height: 100px;
   border-radius: 50px;
   object-fit: cover;
   margin-top: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* トップメイン */
+
+.tweet-title{
+  margin-left: 50px;
+  border-bottom: dotted 0.5px;
+}
+.tweet-prefecture{
+  margin-left: 50px;
+  border-bottom: dotted 0.5px;
+}
+.tweet-nickname{
+  margin-left: 50px;
+  border-bottom: dotted 0.5px;
+}
+.tweet-main{
+  text-align: center;
+}
+table {
+  margin-left: auto;
+  margin-right: auto;
+}
+.tweet-image{
+  margin-top: 10px;
+}
+
+
+/* 投稿画面 */
+.tweets-title{
+  text-align: center;
+  margin-bottom: 10px;
+}
+.tweets-explain{
+  text-align: center;
+  margin-bottom: 10px;
+}
+.tweets-category{
+  text-align: center;
+  margin-bottom: 10px;
+}
+.tweets-prefecture{
+  text-align: center;
+  margin-bottom: 10px;
+}
+.tweets-city{
+  text-align: center;
+  margin-bottom: 10px;
+}
+.tweets-house_number{
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* 詳細画面 */
+.tweet-explain{
+  border-bottom: dotted 0.5px;
+}
+.tweet-category{
+  border-bottom: dotted 0.5px;
+}
+.tweet-prefecture{
+  border-bottom: dotted 0.5px;
+}
+.tweet-city{
+  border-bottom: dotted 0.5px;
+}
+.tweet-house_number{
+  border-bottom: dotted 0.5px;
+}
+.tweet-box-img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.tweet-table{
+  margin-top: 5px;
+}
+
+/* 投稿一覧 */
+.contents{
+  text-align: center;
+}
+/* コメント */
+.comment-area{
+  text-align: center;
 }
