@@ -174,3 +174,28 @@ table {
 .tweet-image{
   margin-top: 10px;
 }
+/* 投稿画面 */
+.tweets-title{
+  margin-bottom: 15px;
+  text-align: center;
+}
+.tweets-explain{
+  margin-bottom: 15px;
+  text-align: center;
+}
+.tweets-category{
+  margin-bottom: 15px;
+  text-align: center;
+}
+.tweets-prefecture{
+  margin-bottom: 15px;
+  text-align: center;
+}
+.tweets-city{
+  margin-bottom: 15px;
+  text-align: center;
+}
+.tweets-house_number{
+  margin-bottom: 15px;
+  text-align: center;
+}

@@ -4,27 +4,21 @@
     <title>Mapimage</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
     <header class="header">
       <div class="header__bar row">
         <div class="nav__left">
           <a href="/">Mapimage</a>
-          
         </div>
         <% if user_signed_in? %>
         <div class="nav__right">
           <div class="user-name">
-           
-             
              <div class="image-header">
              <img src=<%= current_user.image%> class="top_image">
              </div>
-           
           </div>
           <ul class="user__info">
             <li class="users-info">
