@@ -189,9 +189,15 @@ table {
   text-align: center;
   margin-bottom: 10px;
 }
+#tweet_title{
+  width: 200px;
+}
 .tweets-explain{
   text-align: center;
   margin-bottom: 10px;
+}
+#tweet_explain{
+  width: 200px;
 }
 .tweets-category{
   text-align: center;
@@ -201,13 +207,22 @@ table {
   text-align: center;
   margin-bottom: 10px;
 }
+.select-box{
+  width: 210px;
+}
 .tweets-city{
   text-align: center;
   margin-bottom: 10px;
 }
+#tweet_city{
+  width: 200px;
+}
 .tweets-house_number{
   text-align: center;
   margin-bottom: 10px;
+}
+#tweet_house_number{
+  width: 200px;
 }
 
 /* 詳細画面 */
