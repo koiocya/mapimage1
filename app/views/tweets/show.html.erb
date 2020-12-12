@@ -1,8 +1,20 @@
 <div class="tweet-show">
   <div class="tweet-box">
-      <% if user_signed_in? && current_user == @tweet.user %>
-      <%= link_to '編集', edit_tweet_path, method: :get, class: "tweet-red-btn" %>
-      <%= link_to '削除', tweet_path(@tweet.id), method: :delete, class: "tweet-red-btn" %>
+    <% if user_signed_in? && current_user == @tweet.user %>
+     <div id="wrapper">
+        <p class="btn-gnavi">
+          <span></span>
+          <span></span>
+          <span></span>
+        </p>
+        <nav id="tweet-navi">
+          <ul class="menu">
+            <li><%= link_to '一覧に戻る', root_path, class: "a" %></li>
+            <li><%= link_to '編集', edit_tweet_path, method: :get, class: "a" %></li>
+            <li><%= link_to '削除', tweet_path(@tweet.id), method: :delete, class: "tweet-red-btn" %></li>
+          </ul>
+        </nav>
+      </div>
     <% end %>
     <h2 class="title">
       <%= @tweet.title %>
