@@ -331,21 +331,17 @@ table {
 }
 /* プレビュー機能 */
 img {
-  height: 100px;
-  width: 100px;
+  height: 500px;
+  width: 500px;
   border-radius: 100px;
-  object-fit: cover;
+  object-fit: contain;
 }
 #image-list{
   text-align: center;
 }
-img[src$="jpg"] {
-  width: 500px;
-  height: 500px;
-  object-fit: contain;
+img[src^="blob"] {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
 }
-img[src$="jpeg"] {
-  width: 500px;
-  height: 500px;
-  object-fit: contain;
-}
+
