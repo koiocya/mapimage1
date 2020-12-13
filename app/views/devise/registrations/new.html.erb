@@ -5,10 +5,11 @@
 
    <div class="form-group">
     <label class="form-image">
-    <%= f.file_field :image,class:"image-default" %>
+    <%= f.file_field :image,class:"image-default" ,id:'tweet_image' %>
       <span class="image-file">プロフィール画像を選択</span>
-      <input type="file" class="hidden">
+      <input type="file"  class="hidden">
     </label>
+    <div id="image-list"></div>
   </div>
   <div class="form-group">
     <%= f.text_field :nickname,class:"input-default", placeholder: "ニックネーム" %>
