@@ -7,4 +7,6 @@ Rails.application.routes.draw do
     resources :comments, only: :create
   end
   resources :users, only: :show
+  resources :maps
+  get '/map_request', to: 'maps#map', as: 'map_request'
 end
