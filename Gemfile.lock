@@ -269,12 +269,16 @@ DEPENDENCIES
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   factory_bot_rails
 =======
   exifr
   factory_bot_rails
   geocoder
 >>>>>>> parent of afd3755... 緯度経度を使用しgooglemapに反映
+=======
+  factory_bot_rails
+>>>>>>> parent of 9002a1e... Merge pull request #17 from koiocya/revert-16-revert-15-googlemap連携
 =======
   factory_bot_rails
 >>>>>>> parent of 9002a1e... Merge pull request #17 from koiocya/revert-16-revert-15-googlemap連携
