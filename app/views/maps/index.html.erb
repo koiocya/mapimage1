@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <title>Reverse Geocoding</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <script
-      src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API']%>&callback=initMap&libraries=&v=weekly"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDk_9235852X70OGUhi6rS_UYwqQwJVNM0&callback=initMap&libraries=&v=weekly"
       defer
     ></script>
     <style type="text/css">
       #map {
-        height: 80%;
+        height: 100%;
       }
       html,
       body {
-        height: 80%;
+        height: 100%;
         margin: 0;
         padding: 0;
       }
@@ -37,7 +38,7 @@
         left: 50%;
         margin-left: -180px;
         width: 350px;
-        z-index: 12;
+        z-index: 5;
         background-color: #fff;
         padding: 5px;
         border: 1px solid #999;
@@ -78,10 +79,10 @@
               infowindow.setContent(results[0].formatted_address);
               infowindow.open(map, marker);
             } else {
-              window.alert("結果が見つかりません");
+              window.alert("No results found");
             }
           } else {
-            window.alert("失敗しました: " + status);
+            window.alert("Geocoder failed due to: " + status);
           }
         });
       }
@@ -89,11 +90,9 @@
   </head>
   <body>
     <div id="floating-panel">
-      <input id="latlng" type="text" value= "<%= @tweet.image.metadata[:latitude] %>,<%= @tweet.image.metadata[:longitude] %>" />
-      <input id="submit" type="button" value="検索する" />
+      <input id="latlng" type="text" value="40.714224,-73.961452" />
+      <input id="submit" type="button" value="Reverse Geocode" />
     </div>
     <div id="map"></div>
-
   </body>
 </html>
-

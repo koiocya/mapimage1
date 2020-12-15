@@ -4,11 +4,24 @@ Rails.application.routes.draw do
   }
   root to: "tweets#index"
   resources :tweets do
-    member do
-      get 'atlas'
-    end
     resources :comments, only: :create
   end
   resources :users, only: :show
-
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+  resources :maps
+  get '/map_request', to: 'maps#map', as: 'map_request'
+>>>>>>> parent of afd3755... 緯度経度を使用しgooglemapに反映
+=======
+>>>>>>> parent of 9002a1e... Merge pull request #17 from koiocya/revert-16-revert-15-googlemap連携
+=======
+>>>>>>> parent of 9002a1e... Merge pull request #17 from koiocya/revert-16-revert-15-googlemap連携
+=======
+>>>>>>> parent of 9002a1e... Merge pull request #17 from koiocya/revert-16-revert-15-googlemap連携
+=======
+>>>>>>> parent of 8226ba6... Revert "Revert "Googlemap連携""
 end
