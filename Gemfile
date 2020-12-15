@@ -61,7 +61,10 @@ gem 'image_processing', '~> 1.2'
 gem 'active_hash'
 gem 'carrierwave'
 gem 'pry-rails'
+gem 'pry-rails'
 gem 'geocoder'
 gem 'exifr'
 gem 'gon'
 gem 'dotenv-rails'
+
+
