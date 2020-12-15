@@ -60,26 +60,8 @@ gem 'mini_magick'
 gem 'image_processing', '~> 1.2'
 gem 'active_hash'
 gem 'carrierwave'
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-gem 'pry-rails'
-=======
 gem 'pry-rails'
 gem 'geocoder'
 gem 'exifr'
->>>>>>> parent of afd3755... 緯度経度を使用しgooglemapに反映
-=======
-gem 'pry-rails'
->>>>>>> parent of 9002a1e... Merge pull request #17 from koiocya/revert-16-revert-15-googlemap連携
-=======
-gem 'pry-rails'
->>>>>>> parent of 9002a1e... Merge pull request #17 from koiocya/revert-16-revert-15-googlemap連携
-=======
-gem 'pry-rails'
->>>>>>> parent of 9002a1e... Merge pull request #17 from koiocya/revert-16-revert-15-googlemap連携
-=======
-gem 'pry-rails'
->>>>>>> parent of 8226ba6... Revert "Revert "Googlemap連携""
+gem 'gon'
+gem 'dotenv-rails'
