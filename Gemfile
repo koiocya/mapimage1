@@ -60,4 +60,10 @@ gem 'mini_magick'
 gem 'image_processing', '~> 1.2'
 gem 'active_hash'
 gem 'carrierwave'
+<<<<<<< HEAD
 gem 'pry-rails'
+=======
+gem 'pry-rails'
+gem 'geocoder'
+gem 'exifr'
+>>>>>>> parent of afd3755... 緯度経度を使用しgooglemapに反映

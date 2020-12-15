@@ -266,7 +266,13 @@ DEPENDENCIES
   capybara (>= 2.15)
   carrierwave
   devise
+<<<<<<< HEAD
   factory_bot_rails
+=======
+  exifr
+  factory_bot_rails
+  geocoder
+>>>>>>> parent of afd3755... 緯度経度を使用しgooglemapに反映
   image_processing (~> 1.2)
   jbuilder (~> 2.7)
   listen (>= 3.0.5, < 3.2)
