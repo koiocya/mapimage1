@@ -8,7 +8,7 @@ class Tweet < ApplicationRecord
   belongs_to :prefecture
 
   validates :image, presence: {message:'選択してください'}
-  validates :title, :explain, :city, presence: true
+  validates :title, :explain, :city, :house_number, presence: true
   validates :category_id, :prefecture_id, numericality: {other_than: 1, message:'を選択してください' }
 
   
