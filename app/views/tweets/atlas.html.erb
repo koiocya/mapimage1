@@ -10,13 +10,13 @@
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
       #map {
-        height: 100%;
+        height: 80%;
       }
 
       /* Optional: Makes the sample page fill the window. */
       html,
       body {
-        height: 100%;
+        height: 80%;
         margin: 0;
         padding: 0;
       }
@@ -41,7 +41,7 @@
         left: 50%;
         margin-left: -180px;
         width: 350px;
-        z-index: 5;
+        z-index: 12;
         background-color: #fff;
         padding: 5px;
         border: 1px solid #999;
@@ -82,10 +82,10 @@
               infowindow.setContent(results[0].formatted_address);
               infowindow.open(map, marker);
             } else {
-              window.alert("No results found");
+              window.alert("結果が見つかりません");
             }
           } else {
-            window.alert("Geocoder failed due to: " + status);
+            window.alert("失敗しました: " + status);
           }
         });
       }
@@ -94,9 +94,10 @@
   <body>
     <div id="floating-panel">
       <input id="latlng" type="text" value= "<%= @tweet.image.metadata[:latitude] %>,<%= @tweet.image.metadata[:longitude] %>" />
-      <input id="submit" type="button" value="Reverse Geocode" />
+      <input id="submit" type="button" value="検索する" />
     </div>
     <div id="map"></div>
+
   </body>
 </html>
 

@@ -18,9 +18,7 @@
     <% end %>
     <h2 class="title">
       <%= @tweet.title %>
-    </h2>
-    <div class="tweet-map">
-      <%= link_to '地図をみる',atlas_tweet_path, class: "a" %>
+    </h2>  
     <div class="tweet-img">
       <%= image_tag @tweet.image.variant(resize: '500x500'), class:"tweet-box-img" %>
     </div>
@@ -46,15 +44,10 @@
         <th class="tweet-house_numbers">番地</th>
         <th class="tweet-house_number"><%= @tweet.house_number %></th>
       </tr>
-      <tr>
-        <th class="tweet-latitude">緯度</th>
-        <th class="tweet-latitude"><%= @tweet.image.metadata[:latitude] %></th>
-      </tr>
-      <tr>
-        <th class="tweet-longitude">経度</th>
-        <th class="tweet-longitude"><%= @tweet.image.metadata[:longitude] %></th>
-      </tr>
     </table>
+    </div>
+    <div class="map-select">
+      <%= link_to '地図を開く',atlas_tweet_path, class: "button" %>
     </div>
   </div>
   <div class="tweet-comments">
