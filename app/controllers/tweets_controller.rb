@@ -1,6 +1,6 @@
 class TweetsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_tweet, only: [:edit, :update, :destroy, :show]
+  before_action :set_tweet, only: [:edit, :update, :destroy, :show, :atlas]
   
   def index
     @tweets = Tweet.includes(:user).order(created_at: :DESC)
@@ -49,6 +49,9 @@ class TweetsController < ApplicationController
   def show
     @comment = Comment.new
     @comments = @tweet.comments.includes(:user)
+  end
+
+  def atlas
   end
 
   private 
