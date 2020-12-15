@@ -4,9 +4,11 @@ Rails.application.routes.draw do
   }
   root to: "tweets#index"
   resources :tweets do
+    member do
+      get 'atlas'
+    end
     resources :comments, only: :create
   end
   resources :users, only: :show
-  resources :maps
-  get '/map_request', to: 'maps#map', as: 'map_request'
+
 end
