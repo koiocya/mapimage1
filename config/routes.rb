@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   resources :maps
   get '/map_request', to: 'maps#map', as: 'map_request'
@@ -21,4 +22,6 @@ Rails.application.routes.draw do
 >>>>>>> parent of 9002a1e... Merge pull request #17 from koiocya/revert-16-revert-15-googlemap連携
 =======
 >>>>>>> parent of 9002a1e... Merge pull request #17 from koiocya/revert-16-revert-15-googlemap連携
+=======
+>>>>>>> parent of 8226ba6... Revert "Revert "Googlemap連携""
 end

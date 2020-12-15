@@ -270,6 +270,7 @@ DEPENDENCIES
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   factory_bot_rails
 =======
   exifr
@@ -285,6 +286,9 @@ DEPENDENCIES
 =======
   factory_bot_rails
 >>>>>>> parent of 9002a1e... Merge pull request #17 from koiocya/revert-16-revert-15-googlemap連携
+=======
+  factory_bot_rails
+>>>>>>> parent of 8226ba6... Revert "Revert "Googlemap連携""
   image_processing (~> 1.2)
   jbuilder (~> 2.7)
   listen (>= 3.0.5, < 3.2)
