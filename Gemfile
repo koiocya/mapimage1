@@ -65,11 +65,14 @@ gem 'carrierwave'
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
-gem 'pry-rails'
+<<<<<<< HEAD
 =======
+>>>>>>> 7085587bd803b482b606e4af2dc123c95c4c5a46
+gem 'pry-rails'
 gem 'pry-rails'
 gem 'geocoder'
 gem 'exifr'
+<<<<<<< HEAD
 >>>>>>> parent of afd3755... 緯度経度を使用しgooglemapに反映
 =======
 gem 'pry-rails'
@@ -83,3 +86,9 @@ gem 'pry-rails'
 =======
 gem 'pry-rails'
 >>>>>>> parent of 8226ba6... Revert "Revert "Googlemap連携""
+=======
+gem 'gon'
+gem 'dotenv-rails'
+
+
+>>>>>>> 7085587bd803b482b606e4af2dc123c95c4c5a46
