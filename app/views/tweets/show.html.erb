@@ -18,7 +18,7 @@
     <% end %>
     <h2 class="title">
       <%= @tweet.title %>
-    </h2>
+    </h2>  
     <div class="tweet-img">
       <%= image_tag @tweet.image.variant(resize: '500x500'), class:"tweet-box-img" %>
     </div>
@@ -45,6 +45,9 @@
         <th class="tweet-house_number"><%= @tweet.house_number %></th>
       </tr>
     </table>
+    </div>
+    <div class="map-select">
+      <%= link_to '地図を開く',atlas_tweet_path, class: "button" %>
     </div>
   </div>
   <div class="tweet-comments">
