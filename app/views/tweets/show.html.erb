@@ -46,8 +46,13 @@
       </tr>
     </table>
     </div>
+    <% if @tweet.image.metadata[:latitude].present? && @tweet.image.metadata[:longitude].present? %>
     <div class="map-select">
-      <%= link_to '地図を開く',atlas_tweet_path, class: "button" %>
+      <%= link_to '画像から検索',atlas_tweet_path, class: "button" %>
+    </div>
+    <% end %>
+    <div class="map-select">
+      <%= link_to '住所から検索',seek_tweet_path, class: "button" %>
     </div>
   </div>
   <div class="tweet-comments">

@@ -7,6 +7,9 @@ Rails.application.routes.draw do
     member do
       get 'atlas'
     end
+    member do
+      get 'seek'
+    end
     resources :comments, only: :create
   end
   resources :users, only: :show

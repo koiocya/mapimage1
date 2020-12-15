@@ -11,10 +11,6 @@ RSpec.describe Tweet, type: :model do
         it "title,explain,category,prefecture,city,house-number,imageが存在すれば登録できる" do
           expect(@tweet).to be_valid
         end
-        it "番地が無くても登録ができる" do
-          @tweet.house_number = nil
-          expect(@tweet).to be_valid
-        end
       end
 
       context '新規投稿ができない時' do
@@ -32,6 +28,11 @@ RSpec.describe Tweet, type: :model do
           @tweet.explain = nil
           @tweet.valid?
           expect(@tweet.errors.full_messages).to include("ポイントを入力してください")
+        end
+        it '番地がないと投稿できない' do
+          @tweet.house_number = nil
+          @tweet.valid?
+          expect(@tweet.errors.full_messages).to include("番地を入力してください")
         end
         it 'カテゴリーの選択が１番だと投稿できない' do
           @tweet.category_id = "1"
