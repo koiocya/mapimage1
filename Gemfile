@@ -63,5 +63,9 @@ gem 'carrierwave'
 gem 'pry-rails'
 gem 'geocoder'
 gem 'exifr'
+<<<<<<< HEAD
 gem 'gon'
 gem 'dotenv-rails'
+=======
+gem 'gon'
+>>>>>>> f62906c8515d9fd140efebb9a32a52880ba0da35
