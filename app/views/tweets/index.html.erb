@@ -2,7 +2,7 @@
   <div class="tweet-upper">
      <% @tweets.each do |tweet| %>
       <div class="tweet-image">
-      <%=link_to (image_tag tweet.image.variant(resize: '500x500')), tweet_path(tweet.id) %>
+      <%=link_to image_tag(tweet.image), tweet_path(tweet.id) %>
       </div>
     <div class="tweet-table">
     <table>

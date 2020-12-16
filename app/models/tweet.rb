@@ -11,5 +11,5 @@ class Tweet < ApplicationRecord
   validates :title, :explain, :city, :house_number, presence: true
   validates :category_id, :prefecture_id, numericality: {other_than: 1, message:'を選択してください' }
 
-  
+
 end
