@@ -64,7 +64,7 @@
   </head>
   <body>
     <div id="floating-panel">
-      <input id="address" type="textbox" value="<%= @tweet.prefecture.name %>, <%= @tweet.city %>, <%=@tweet.house_number %>" />
+      <input id="address" type="textbox" value="<%= @tweet.prefecture.name %><%= @tweet.city %><%=@tweet.house_number %>" />
       <input id="submit" type="button" value="検索する" />
     </div>
     <div id="map"></div>
