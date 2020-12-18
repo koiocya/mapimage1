@@ -100,3 +100,57 @@ RSpec.describe'ログイン', type: :system do
     end
   end
 end
+
+RSpec.describe'ユーザー編集', type: :system do
+  before do
+    @user = FactoryBot.create(:user)
+  end
+  context 'ユーザー編集ができるとき' do
+    it '正しい情報を入力すればユーザーが編集ができてトップページに移動する' do
+      #ログインする
+      visit root_path
+      expect(page).to have_content('ログイン')
+      visit new_user_session_path
+      fill_in 'メールアドレス', with: @user.email
+      fill_in 'パスワード', with: @user.password
+      find('input[name="signin"]').click
+      # トップページにログインページへ遷移するボタンがあることを確認する
+      expect(page).to have_content('ユーザー編集')
+      # ユーザー編集ページへ遷移する
+      visit edit_user_registration_path
+      #ユーザー情報を入力する
+      image_path = Rails.root.join('spec/fixtures/test.jpg')
+      attach_file('user[image]', image_path, make_visible: true)
+      fill_in 'ニックネーム', with: @user.nickname
+      fill_in 'パスワード', with: @user.password
+      fill_in 'パスワード(確認)', with: @user.password_confirmation
+      # トップページへ遷移する
+      expect(current_path).to eq "/users/edit"
+    end
+  end
+  context 'ユーザーが編集できないとき' do
+    it '誤った情報を入力するとユーザーは編集できない' do
+      #ログインする
+       visit root_path
+       expect(page).to have_content('ログイン')
+       visit new_user_session_path
+       fill_in 'メールアドレス', with: @user.email
+       fill_in 'パスワード', with: @user.password
+       find('input[name="signin"]').click
+       # トップページへ遷移することを確認する
+       expect(current_path).to eq root_path
+      # トップページにログインページへ遷移するボタンがあることを確認する
+      expect(page).to have_content('ユーザー編集')
+      # ユーザー編集ページへ遷移する
+      visit edit_user_registration_path
+      #ユーザー情報を入力する
+      image_path = Rails.root.join("")
+      attach_file('user[image]', image_path, make_visible: true)
+      fill_in 'ニックネーム', with: ""
+      fill_in 'パスワード', with: ""
+      fill_in 'パスワード(確認)', with: ""
+      # ユーザー編集ページ戻されることを確認する
+      expect(current_path).to eq edit_user_registration_path
+    end
+  end
+end
