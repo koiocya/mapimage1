@@ -7,7 +7,7 @@
     <label class="form-image">
     <%= f.file_field :image,class:"image-default" ,id:'tweet_image' %>
       <span class="image-file">プロフィール画像を選択</span>
-      <input type="file"  class="hidden">
+      <input type="file" name="imgselect"  class="hidden">
     </label>
     <div id="image-list"></div>
   </div>
@@ -33,7 +33,7 @@
   </div>
 
   <div class="actions">
-    <input type="submit" value="登録" class="button">
+    <input type="submit" name="signup" value="登録" class="button">
   </div>
 <% end %>
 
