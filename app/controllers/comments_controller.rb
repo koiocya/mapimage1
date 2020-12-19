@@ -8,8 +8,8 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    Comment.find_by(id: params[:id],tweet_id: params[:tweet_id]).destroy
-    redirect_to tweets_path
+    comment = Comment.find_by(id: params[:id],tweet_id: params[:tweet_id]).destroy
+    redirect_to  "/tweets/#{comment.tweet.id}"
   end
 
   private
