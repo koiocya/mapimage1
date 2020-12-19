@@ -1,3 +1,4 @@
+// レビュー機能
 if (document.URL.match( /sign_up/ ) || document.URL.match( /edit/ ) || document.URL.match( /new/ )) {
 document.addEventListener('DOMContentLoaded', function(){
   const ImageList = document.getElementById('image-list');

@@ -1,7 +1,6 @@
 FactoryBot.define do
   factory :tweet do
     association :user
-    
     title          {"test"}
     explain        {"abcdefg"}
     category_id    {"2"}

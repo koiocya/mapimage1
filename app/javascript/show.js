@@ -17,10 +17,3 @@ $(function(){
       }, 200);
   });
 });
-
-// 自動リロード
-// $(function(){
-//   setTimeout(function(){
-//     location.reload();
-//   },9000);
-// });
