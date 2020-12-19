@@ -70,3 +70,86 @@ RSpec.describe "Tweets", type: :system do
     end
   end
 end
+RSpec.describe 'ツイート編集', type: :system do
+  before do
+    @user = FactoryBot.create(:user)
+    @tweet1 = FactoryBot.create(:tweet)
+    @tweet2 = FactoryBot.create(:tweet)
+  end
+  context 'ツイートが編集できるとき' do
+    it 'ログインしたユーザーは自分が投稿したツイートの編集ができる' do
+      #ツイート1を投稿したユーザーでログインする
+      visit new_user_session_path
+      fill_in 'メールアドレス', with: @tweet1.user.email
+      fill_in 'パスワード', with: @tweet1.user.password
+      find('input[name="signin"]').click
+      expect(current_path).to eq root_path
+      #詳細ページへ移動する
+      visit tweet_path(@tweet1)
+      #ハンバーガーメニューをクリックする
+      find('.btn-gnavi').click
+      #編集ボタンがあることを確認する
+      expect(page).to have_content('編集')
+      #編集ページに遷移することを確認する
+      visit edit_tweet_path(@tweet1)
+      #既に投稿済みの内容がフォームに入っていることを確認する
+      expect(page).to have_content('image')
+      expect(find('#tweet_title').value).to eq @tweet1.title
+      expect(find('#tweet_explain').value).to eq @tweet1.explain
+      expect(page).to have_select('tweet-category', selected: '風景')
+      expect(page).to have_select('tweet-prefecture', selected: '北海道')
+      expect(find('#tweet_city').value).to eq @tweet1.city
+      expect(find('#tweet_house_number').value).to eq @tweet1.house_number
+      #投稿内容を編集する
+      image_path = Rails.root.join('spec/fixtures/test.jpg')
+      attach_file('tweet[image]', image_path, make_visible: true)
+      fill_in 'tweet_title',with: "#{@tweet1.title}+編集したタイトル"
+      fill_in 'tweet[explain]', with: "#{@tweet1.explain}+編集した詳細"
+      find("#tweet-category").find("option[value='3']").select_option
+      find("#tweet-prefecture").find("option[value='3']").select_option
+      fill_in 'tweet[city]', with: "#{@tweet1.city}+編集した市町村"
+      fill_in 'tweet[house_number]', with: "#{@tweet1.house_number}+編集した番地"
+      #編集してもTweetモデルのカウントは変わらないことを確認する
+      expect{
+        find('input[name="tweetedit"]').click
+      }.to change { Tweet.count }.by(0)
+       # 詳細画面に遷移したことを確認する
+       expect(current_path).to eq tweet_path(@tweet1.id)
+       #詳細ページには先ほど変更した内容の投稿が存在することを確認する（画像）
+       expect(page).to have_content("image")
+       #詳細ページには先ほど変更した内容の投稿が存在することを確認する（画像）
+       expect(page).to have_content("#{@tweet1.title}+編集したタイトル")
+       expect(page).to have_content("#{@tweet1.explain}+編集した詳細")
+       expect(page).to have_content('野生動物')
+       expect(page).to have_content('青森県')
+       expect(page).to have_content("#{@tweet1.city}+編集した市町村")
+       expect(page).to have_content("#{@tweet1.house_number}+編集した番地")
+    end
+  end
+  context 'ツイート編集ができないとき' do
+    it 'ログインしたユーザーは自分以外が投稿したツイートの編集画面には遷移できない' do
+      # ツイート1を投稿したユーザーでログインする
+      visit new_user_session_path
+      fill_in 'メールアドレス', with: @tweet1.user.email
+      fill_in 'パスワード', with: @tweet1.user.password
+      find('input[name="signin"]').click
+      expect(current_path).to eq root_path
+      #詳細ページへ移動する
+      visit tweet_path(@tweet2)
+      # ツイート2に「ハンバーガーメニュー」ボタンがないことを確認する
+      expect(page).to have_no_content('btn-gnavi')
+    end
+    it 'ログインしていないとツイートの編集画面には遷移できない' do
+      # トップページにいる
+      visit root_path
+      # ツイート1に「編集」ボタンがないことを確認する
+      visit tweet_path(@tweet1)
+      # ツイート1に「ハンバーガーメニュー」ボタンがないことを確認する
+      expect(page).to have_no_content('btn-gnavi')
+      # ツイート2に「編集」ボタンがないことを確認する
+      visit tweet_path(@tweet2)
+      # ツイート2に「ハンバーガーメニュー」ボタンがないことを確認する
+      expect(page).to have_no_content('btn-gnavi')
+    end
+  end
+end
