@@ -13,4 +13,6 @@ ja:
        house_number: 番地
        category_id: カテゴリー
        prefecture_id: 都道府県
+     comment:
+       text: テキスト
       
