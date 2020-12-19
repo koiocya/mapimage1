@@ -350,3 +350,43 @@ img[src^="blob"] {
   margin-right: auto;
   padding:10px 0;
 }
+
+.comment{
+  margin: 5px auto;
+  padding: 1px;
+  width: 90%;
+  border: 3px dashed #c0c0c0; 
+  color: black; /* 文字色 */
+  border-radius: 1px; /*角の丸み*/
+}
+.comment-message{
+  text-align: center;
+}
+.comment-text{
+  margin: 15px 0;
+}
+.delete{
+  margin-bottom: 5px;
+  text-align: right;
+}
+.comment-delete{
+  font-size: 5px;
+  text-align: right;
+  display       : inline-block;
+  border-radius : 4%;          /* 角丸       */
+  font-size     : 5pt;        /* 文字サイズ */
+  text-align    : center;      /* 文字位置   */
+  cursor        : pointer;     /* カーソル   */
+  padding       : 6px 0px;   /* 余白       */
+  background    : #ff0000;     /* 背景色     */
+  color         : #ffffff;     /* 文字色     */
+  line-height   : 1em;         /* 1行の高さ  */
+  transition    : .3s;         /* なめらか変化 */
+  box-shadow    : 2px 2px 3px #666666;  /* 影の設定 */
+  border        : 2px solid #ff0000;    /* 枠の指定 */
+}
+.button:hover {
+  box-shadow    : none;        /* カーソル時の影消去 */
+  color         : #ff0000;     /* 背景色     */
+  background    : #ffffff;     /* 文字色     */
+}

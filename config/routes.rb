@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     member do
       get 'seek'
     end
-    resources :comments, only: :create
+    resources :comments, only: [:create, :destroy]
   end
   resources :users, only: :show
 
