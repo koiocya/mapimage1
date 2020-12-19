@@ -72,7 +72,6 @@ RSpec.describe "Tweets", type: :system do
 end
 RSpec.describe 'ツイート編集', type: :system do
   before do
-    @user = FactoryBot.create(:user)
     @tweet1 = FactoryBot.create(:tweet)
     @tweet2 = FactoryBot.create(:tweet)
   end
@@ -210,3 +209,50 @@ RSpec.describe 'ツイート削除', type: :system do
     end
   end
 end
+RSpec.describe 'ツイート詳細', type: :system do
+  before do
+    @user = FactoryBot.create(:user)
+    @tweet = FactoryBot.create(:tweet)
+  end
+  it 'ログインしたユーザーはツイート詳細ページに遷移してコメント投稿ができる' do
+    #ログインする
+    visit root_path
+    expect(page).to have_content('ログイン')
+    visit new_user_session_path
+    fill_in 'メールアドレス', with: @user.email
+    fill_in 'パスワード', with: @user.password
+    find('input[name="signin"]').click
+    expect(current_path).to eq root_path
+    #詳細ページへ遷移する
+    visit tweet_path(@tweet)
+    #詳細ページにツイートの内容が含まれている
+    expect(page).to have_content('image')
+    expect(page).to have_content(@tweet.title)
+    expect(page).to have_content(@tweet.explain)
+    expect(page).to have_content('風景')
+    expect(page).to have_content('北海道')
+    expect(page).to have_content(@tweet.city)
+    expect(page).to have_content(@tweet.house_number)
+    #コメント用のフォームが存在する
+    expect(page).to have_selector 'form'
+  end
+  it 'ログインしていない状態でツイートの詳細ページに遷移できるがコメント投稿欄が表示されない' do
+    #トップページに移動する
+    visit root_path
+    #ツイート詳細ページに遷移する
+    visit tweet_path(@tweet)
+    #詳細ページにツイートの内容が含まれている
+    expect(page).to have_content('image')
+    expect(page).to have_content(@tweet.title)
+    expect(page).to have_content(@tweet.explain)
+    expect(page).to have_content('風景')
+    expect(page).to have_content('北海道')
+    expect(page).to have_content(@tweet.city)
+    expect(page).to have_content(@tweet.house_number)
+    #コメント用のフォームが存在しないことを確認する
+    expect(page).to have_no_selector 'form'
+    #「コメントの投稿には新規登録/ログインが必要です」が表示されていることを確認する
+    expect(page).to have_content 'コメントの投稿には新規登録/ログインが必要です'
+  end
+end
+
