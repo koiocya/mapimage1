@@ -142,11 +142,68 @@ RSpec.describe 'ツイート編集', type: :system do
     it 'ログインしていないとツイートの編集画面には遷移できない' do
       # トップページにいる
       visit root_path
-      # ツイート1に「編集」ボタンがないことを確認する
+      # ツイート1の詳細ページに遷移する
       visit tweet_path(@tweet1)
       # ツイート1に「ハンバーガーメニュー」ボタンがないことを確認する
       expect(page).to have_no_content('btn-gnavi')
-      # ツイート2に「編集」ボタンがないことを確認する
+      # ツイート2の詳細ページに遷移する
+      visit tweet_path(@tweet2)
+      # ツイート2に「ハンバーガーメニュー」ボタンがないことを確認する
+      expect(page).to have_no_content('btn-gnavi')
+    end
+  end
+end
+RSpec.describe 'ツイート削除', type: :system do
+  before do
+    @tweet1 = FactoryBot.create(:tweet)
+    @tweet2 = FactoryBot.create(:tweet)
+  end
+  context 'ツイートが削除できるとき' do
+    it 'ログインしたユーザーは自ら投稿したツイートの削除ができる' do
+      #ツイート1を投稿したユーザーでログインする
+      visit new_user_session_path
+      fill_in 'メールアドレス', with: @tweet1.user.email
+      fill_in 'パスワード', with: @tweet1.user.password
+      find('input[name="signin"]').click
+      expect(current_path).to eq root_path
+      #詳細ページへ移動する
+      visit tweet_path(@tweet1)
+      #ハンバーガーメニューをクリックする
+      find('.btn-gnavi').click
+      #削除ボタンがあることを確認する
+      expect(page).to have_content('削除')
+      #投稿を削除するとレコードの数が１減ることを確認する
+      expect{click_on '削除'}.to change {Tweet.count}.by(-1)
+      #トップページに遷移する
+      visit root_path
+      #トップページにはツイート1の内容が存在しないことを確認する
+      expect(page).to have_no_content('@tweet1.image')
+      expect(page).to have_no_content('@tweet1.title')
+      expect(page).to have_no_content('@tweet1.prefecture')
+      expect(page).to have_no_content('@tweet1.title')
+    end
+  end
+  context 'ツイートを削除でいないとき' do
+    it 'ログインしたユーザーは自分以外が投稿したツイートの削除画面には遷移できない' do
+      # ツイート1を投稿したユーザーでログインする
+      visit new_user_session_path
+      fill_in 'メールアドレス', with: @tweet1.user.email
+      fill_in 'パスワード', with: @tweet1.user.password
+      find('input[name="signin"]').click
+      expect(current_path).to eq root_path
+      #詳細ページへ移動する
+      visit tweet_path(@tweet2)
+      # ツイート2に「ハンバーガーメニュー」ボタンがないことを確認する
+      expect(page).to have_no_content('btn-gnavi')
+    end
+    it 'ログインしていないとツイートの削除画面には遷移できない' do
+      # トップページにいる
+      visit root_path
+      # ツイート1の詳細ページに遷移する
+      visit tweet_path(@tweet1)
+      # ツイート1に「ハンバーガーメニュー」ボタンがないことを確認する
+      expect(page).to have_no_content('btn-gnavi')
+      # ツイート2の詳細ページに遷移する
       visit tweet_path(@tweet2)
       # ツイート2に「ハンバーガーメニュー」ボタンがないことを確認する
       expect(page).to have_no_content('btn-gnavi')
