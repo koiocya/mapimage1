@@ -182,7 +182,7 @@ RSpec.describe 'ツイート削除', type: :system do
       expect(page).to have_no_content('@tweet1.title')
     end
   end
-  context 'ツイートを削除でいないとき' do
+  context 'ツイートを削除できないとき' do
     it 'ログインしたユーザーは自分以外が投稿したツイートの削除画面には遷移できない' do
       # ツイート1を投稿したユーザーでログインする
       visit new_user_session_path
