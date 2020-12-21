@@ -240,11 +240,10 @@ RSpec.describe 'GoogleMapにてツイート詳細', type: :system do
       expect(page).to have_content('画像から検索')
       #画像から検索ボタンをクリックする
       click_on '画像から検索'
-      #GoogleMapが存在するページに遷移する
-      visit  atlas_tweet_path(@tweet)
       #検索欄があることを確認する
       expect(find('#latlng').value).to eq '34.69937222222222,137.70076666666668'
       #検索する
+      binding.pry
       click_button '検索する'
       #googleMapが作動することを確認する
 
@@ -260,12 +259,9 @@ RSpec.describe 'GoogleMapにてツイート詳細', type: :system do
       click_on '住所から検索'
       #GoogleMapが存在するページに遷移する
       visit  seek_tweet_path(@tweet)
-      #検索欄があることを確認する
-      expect(find('#address').value).to eq '北海道札幌市50'
       #検索する
       click_button '検索する'
       #googleMapが作動することを確認する
-
     end
   end
   context '投稿した画像に住所のみ存在するとき' do
