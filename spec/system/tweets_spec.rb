@@ -1,5 +1,6 @@
 require 'rails_helper'
 
+
 RSpec.describe "Tweets", type: :system do
   before do
     @user = FactoryBot.create(:user)
@@ -8,12 +9,7 @@ RSpec.describe "Tweets", type: :system do
   context 'ツイート投稿ができるとき' do
     it 'ログインしたユーザーは新規登録ができる' do
       #ログインする
-      visit root_path
-      expect(page).to have_content('ログイン')
-      visit new_user_session_path
-      fill_in 'メールアドレス', with: @user.email
-      fill_in 'パスワード', with: @user.password
-      find('input[name="signin"]').click
+      sign_in(@user)
       #新規投稿ページへのリンクがあることを確認する
       expect(page).to have_content('投稿する')
       #投稿ページに移動する
@@ -46,12 +42,7 @@ RSpec.describe "Tweets", type: :system do
     end
     it 'ログインしても誤った情報では投稿できない' do
       #ログインする
-      visit root_path
-      expect(page).to have_content('ログイン')
-      visit new_user_session_path
-      fill_in 'メールアドレス', with: @user.email
-      fill_in 'パスワード', with: @user.password
-      find('input[name="signin"]').click
+      sign_in(@user)
       #新規投稿ページへのリンクがあることを確認する
       expect(page).to have_content('投稿する')
       #投稿ページに移動する
@@ -70,6 +61,7 @@ RSpec.describe "Tweets", type: :system do
     end
   end
 end
+
 RSpec.describe 'ツイート編集', type: :system do
   before do
     @tweet1 = FactoryBot.create(:tweet)
@@ -78,11 +70,7 @@ RSpec.describe 'ツイート編集', type: :system do
   context 'ツイートが編集できるとき' do
     it 'ログインしたユーザーは自分が投稿したツイートの編集ができる' do
       #ツイート1を投稿したユーザーでログインする
-      visit new_user_session_path
-      fill_in 'メールアドレス', with: @tweet1.user.email
-      fill_in 'パスワード', with: @tweet1.user.password
-      find('input[name="signin"]').click
-      expect(current_path).to eq root_path
+      sign_in(@tweet1.user)
       #詳細ページへ移動する
       visit tweet_path(@tweet1)
       #ハンバーガーメニューをクリックする
@@ -128,11 +116,7 @@ RSpec.describe 'ツイート編集', type: :system do
   context 'ツイート編集ができないとき' do
     it 'ログインしたユーザーは自分以外が投稿したツイートの編集画面には遷移できない' do
       # ツイート1を投稿したユーザーでログインする
-      visit new_user_session_path
-      fill_in 'メールアドレス', with: @tweet1.user.email
-      fill_in 'パスワード', with: @tweet1.user.password
-      find('input[name="signin"]').click
-      expect(current_path).to eq root_path
+      sign_in(@tweet1.user)
       #詳細ページへ移動する
       visit tweet_path(@tweet2)
       # ツイート2に「ハンバーガーメニュー」ボタンがないことを確認する
@@ -160,11 +144,7 @@ RSpec.describe 'ツイート削除', type: :system do
   context 'ツイートが削除できるとき' do
     it 'ログインしたユーザーは自ら投稿したツイートの削除ができる' do
       #ツイート1を投稿したユーザーでログインする
-      visit new_user_session_path
-      fill_in 'メールアドレス', with: @tweet1.user.email
-      fill_in 'パスワード', with: @tweet1.user.password
-      find('input[name="signin"]').click
-      expect(current_path).to eq root_path
+      sign_in(@tweet1.user)
       #詳細ページへ移動する
       visit tweet_path(@tweet1)
       #ハンバーガーメニューをクリックする
@@ -185,11 +165,7 @@ RSpec.describe 'ツイート削除', type: :system do
   context 'ツイートを削除できないとき' do
     it 'ログインしたユーザーは自分以外が投稿したツイートの削除画面には遷移できない' do
       # ツイート1を投稿したユーザーでログインする
-      visit new_user_session_path
-      fill_in 'メールアドレス', with: @tweet1.user.email
-      fill_in 'パスワード', with: @tweet1.user.password
-      find('input[name="signin"]').click
-      expect(current_path).to eq root_path
+      sign_in(@tweet1.user)
       #詳細ページへ移動する
       visit tweet_path(@tweet2)
       # ツイート2に「ハンバーガーメニュー」ボタンがないことを確認する
@@ -216,13 +192,7 @@ RSpec.describe 'ツイート詳細', type: :system do
   end
   it 'ログインしたユーザーはツイート詳細ページに遷移してコメント投稿ができる' do
     #ログインする
-    visit root_path
-    expect(page).to have_content('ログイン')
-    visit new_user_session_path
-    fill_in 'メールアドレス', with: @user.email
-    fill_in 'パスワード', with: @user.password
-    find('input[name="signin"]').click
-    expect(current_path).to eq root_path
+    sign_in(@user)
     #詳細ページへ遷移する
     visit tweet_path(@tweet)
     #詳細ページにツイートの内容が含まれている
@@ -255,4 +225,85 @@ RSpec.describe 'ツイート詳細', type: :system do
     expect(page).to have_content 'コメントの投稿には新規登録/ログインが必要です'
   end
 end
+RSpec.describe 'GoogleMapにてツイート詳細', type: :system do
+  before do
+    @user = FactoryBot.create(:user)
+    @tweet = FactoryBot.create(:tweet)
+  end
+  context '投稿した画像に緯度経度が存在するとき' do
+    it 'ツイート詳細画面にて画像から検索ができる' do
+      #ログインする
+      sign_in(@user)
+      #詳細ページに遷移する
+      visit tweet_path(@tweet)
+      #画像から検索のボタンがあることを確認する
+      expect(page).to have_content('画像から検索')
+      #画像から検索ボタンをクリックする
+      click_on '画像から検索'
+      #GoogleMapが存在するページに遷移する
+      visit  atlas_tweet_path(@tweet)
+      #検索欄があることを確認する
+      expect(find('#latlng').value).to eq '34.69937222222222,137.70076666666668'
+      #検索する
+      click_button '検索する'
+      #googleMapが作動することを確認する
+
+    end
+    it 'ツイート詳細画面にて住所から検索ができる' do
+      #ログインする
+      sign_in(@user)
+      #詳細ページに遷移する
+      visit tweet_path(@tweet)
+      #住所から検索のボタンがあることを確認する
+      expect(page).to have_content('住所から検索')
+      #住所から検索ボタンをクリックする
+      click_on '住所から検索'
+      #GoogleMapが存在するページに遷移する
+      visit  seek_tweet_path(@tweet)
+      #検索欄があることを確認する
+      expect(find('#address').value).to eq '北海道札幌市50'
+      #検索する
+      click_button '検索する'
+      #googleMapが作動することを確認する
+
+    end
+  end
+  context '投稿した画像に住所のみ存在するとき' do
+    it 'ツイート詳細画面にて住所から検索ができる' do
+      sign_in(@user)
+      #新規投稿ページへのリンクがあることを確認する
+      expect(page).to have_content('投稿する')
+      #投稿ページに移動する
+      visit new_tweet_path
+      #フォームに情報を入力する
+      image_path = Rails.root.join('spec/fixtures/test.jpg')
+      attach_file('tweet[image]', image_path, make_visible: true)
+      fill_in 'tweet_title', with: @tweet.title
+      fill_in 'tweet[explain]', with:@tweet.explain
+      find("#tweet-category").find("option[value='2']").select_option
+      find("#tweet-prefecture").find("option[value='2']").select_option
+      fill_in 'tweet[city]', with: @tweet.city
+      fill_in 'tweet[house_number]', with: @tweet.house_number
+      #投稿する
+      click_on '投稿'
+      #トップページにいることを確認する
+      expect(current_path).to eq root_path
+      #詳細ページに遷移する
+      page.all(".tweet-image")[0].click
+      #画像から検索するボタンがないことを確認する
+      expect(page).to have_no_content('画像から検索する')
+      #住所から検索のボタンがあることを確認する
+      expect(page).to have_content('住所から検索')
+      #住所から検索ボタンをクリックしGoogleMapが存在するページに遷移する
+      click_on '住所から検索'
+      #検索欄があることを確認する
+      expect(find('#address').value).to eq '北海道札幌市50'
+      #検索する
+      click_button '検索する'
+      #googleMapが作動することを確認する
+    end
+  end
+end
+
+
 
