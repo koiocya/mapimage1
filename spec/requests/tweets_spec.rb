@@ -101,6 +101,7 @@ describe TweetsController, type: :request do
       expect(response.status).to eq 302
     end
     it'ログインしているユーザーであれば詳細ページからGoogleMapが存在するページに遷移できる' do
+      sign_in @user
       get tweet_path(@tweet)
       get atlas_tweet_path(@tweet)
       expect(response.status).to eq 200
@@ -113,6 +114,7 @@ describe TweetsController, type: :request do
       expect(response.status).to eq 302
     end
     it'ログインしているユーザーであれば詳細ページからGoogleMapが存在するページに遷移できる' do
+      sign_in @user
       get tweet_path(@tweet)
       get seek_tweet_path(@tweet)
       expect(response.status).to eq 200
