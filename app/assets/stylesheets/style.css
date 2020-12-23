@@ -5,11 +5,13 @@ a{
 }
 .nav__left{
   font-size: 30px;
+  margin-left: 10px;
 }
 .nav__right{
   font-size: 15px;
   text-align: right;
   margin-right: 40px;
+  margin-left: 10px;
 }
 .post{
   display       : inline-block;
@@ -390,3 +392,4 @@ img[src^="blob"] {
   color         : #ff0000;     /* 背景色     */
   background    : #ffffff;     /* 文字色     */
 }
+
