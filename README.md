@@ -61,7 +61,18 @@
 - https://gyazo.com/849bc41afcfcc46a37bf4ced7ded8522
 
 # ローカルでの動作方法
-
+- $ git clone https://github.com/koiocya/mapimage1.git
+- 環境
+ - ruby '2.6.5'
+ - gem 'rails', '~> 6.0.0'
+ - gem 'mysql2', '>= 0.4.4'
+ - gem 'puma', '~> 3.11'
+ - gem 'sass-rails', '~> 5'
+ - gem 'webpacker', '~> 4.0'
+ - gem 'turbolinks', '~> 5'
+ - gem 'jbuilder', '~> 2.7'
+ - gem 'rspec-rails', '~> 4.0.0'
+ - gem 'capybara', '>= 2.15'
 
 # テーブル設計
 
