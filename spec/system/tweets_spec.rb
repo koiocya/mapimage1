@@ -243,10 +243,7 @@ RSpec.describe 'GoogleMapにてツイート詳細', type: :system do
       #検索欄があることを確認する
       expect(find('#latlng').value).to eq '34.69937222222222,137.70076666666668'
       #検索する
-      binding.pry
       click_button '検索する'
-      #googleMapが作動することを確認する
-
     end
     it 'ツイート詳細画面にて住所から検索ができる' do
       #ログインする
@@ -296,7 +293,6 @@ RSpec.describe 'GoogleMapにてツイート詳細', type: :system do
       expect(find('#address').value).to eq '北海道札幌市50'
       #検索する
       click_button '検索する'
-      #googleMapが作動することを確認する
     end
   end
 end
