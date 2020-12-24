@@ -6,8 +6,8 @@
       src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['GOOGLE_MAP_API']%>&callback=initMap&libraries=&v=weekly"defer></script>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
     <style type="text/css">
-      #map {
-        height: 80%;
+       #map {
+        height: 90%;
       }
       html,
       body {
@@ -15,9 +15,7 @@
         margin: 0;
         padding: 0;
       }
-
       #floating-panel {
-        position: absolute;
         top: 10px;
         left: 25%;
         z-index: 5;
@@ -28,22 +26,6 @@
         font-family: "Roboto", "sans-serif";
         line-height: 30px;
         padding-left: 10px;
-      }
-
-      #floating-panel {
-        position: absolute;
-        top: 5px;
-        left: 50%;
-        margin-left: -180px;
-        width: 350px;
-        z-index: 12;
-        background-color: #fff;
-        padding: 5px;
-        border: 1px solid #999;
-      }
-
-      #latlng {
-        width: 225px;
       }
     </style>
     <script>
